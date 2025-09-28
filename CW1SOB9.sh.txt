@@ -1,0 +1,26 @@
+#!/bin/bash
+
+rem Check if a path is provided
+if [ -z "$1" ]; then
+    echo "Provide the path where you want to create the folders."
+    exit 1
+fi
+
+rem Navigate to the provided path
+cd "$1"
+
+rem Create directories a, b, and c
+mkdir a b c
+
+rem Task 1: Create userName.txt in folder a with the MDX username
+echo ZD115 > a/userName.txt
+
+rem Task 2: Create myFavMovie.txt in folder b with the name of your favorite movie
+echo Tangled > b/myFavMovie.txt
+
+rem Task 3: Move folders a and b into folder c
+mv a c/
+mv b c/
+
+rem Print completion message
+echo Task Complete!.

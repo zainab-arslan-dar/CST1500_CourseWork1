@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Check if the number of arguments is exactly 3
+if [ "$#" -ne 3 ]; then
+  echo "Usage: $0 <path> <x> <y>"
+  exit 1
+fi
+
+# Assign the arguments to variables
+path="$1"
+x="$2"
+y="$3"
+
+# Check if the path exists, if not create it
+if [ -d "$path" ]; then
+  echo "The directory '$path' already exists."
+else
+  echo "The directory '$path' does not exist. Creating it now..."
+  mkdir -p "$path"
+  echo "Directory '$path' created successfully."
+fi
+
+# Validate that x is an integer between 1 and 20
+if ! [[ "$x" =~ ^[0-9]+$ ]] || [ "$x" -le 0 ] || [ "$x" -gt 20 ]; then
+  echo "Error: The second parameter (x) must be an integer between 1 and 20."
+  exit 1
+fi
+
+# Validate that y is an integer between 1 and 20
+if 
+fi
+
+# Create x number of folders inside the specified path
+echo "Creating $x folders in '$path'..."
+for ((i=1; i<=x; i++))
+do
+  folder_name="$path/folder_$i"
+  mkdir -p "$folder_name"
+  echo "Created folder: $folder_name"
+
+  # Create y number of .txt files in each folder
+  for ((j=1; j<=y; j++))
+  do
+    touch "$folder_name/file_$j.txt"
+    echo "Created file: $folder_name/file_$j.txt"
+  done
+done
+
+echo "Process completed successfully!"
